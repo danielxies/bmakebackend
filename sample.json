@@ -1,0 +1,22 @@
+{
+  "exchanges": [
+    {
+      "interviewee": "You fucking kidding me, guys.",
+      "interviewer": "Hello, how are you doing today?",
+      "interviewer_feedback": "The response is inappropriate and unprofessional. It does not address the question, lacks structure, and is highly underdeveloped.",
+      "score": 1
+    },
+    {
+      "interviewee": "Yeah. Uh, my name is Daniel. I'm, um, a sophomore at Purdue. Um, I'm interested in this role because I want to make money I don't care about the industry.",
+      "interviewer": "I apologize if there was any misunderstanding. I'm here to help. Let\u2019s get started with the interview. My name is Ana, and I'm a recruiter for Boilermake, where we're currently looking for candidates for our summer 2025 software engineering internship program.Could you please introduce yourself and share why you're interested in this role?",
+      "interviewer_feedback": "The response demonstrates minimal understanding or competence. It lacks clarity, depth, and professionalism. The candidate's answer does not directly address the question regarding interest in the role, and instead, focuses on a desire for money, showing a lack of genuine interest in the industry or position. This answer is unclear and highly underdeveloped, requiring further elaboration and focus.",
+      "score": 2
+    },
+    {
+      "interviewee": "Yeah. I'm really good at just copying code off people. Really don't know how to write code myself.",
+      "interviewer": "Thank you for sharing that, Daniel. It's great to hear that you're interested in the role. At Boilermake, we value candidates who are eager to learn and contribute to meaningful projects. Can you tell me a bit more about your skills or experiences that you think would make you a good fit for this internship?",
+      "interviewer_feedback": "The response shows minimal understanding or competence, and is unclear or highly underdeveloped. The candidate admits to copying code from others and lacks the ability to write code independently, which is not a desirable skillset for the role they are applying for.",
+      "score": 2
+    }
+  ]
+}

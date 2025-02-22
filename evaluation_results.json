@@ -1,0 +1,51 @@
+{
+  "data": {
+    "technical_knowledge": {
+      "score": 5,
+      "comment": "The candidate acknowledges working within existing technologies, indicating a functional level of technical knowledge for their current roles. However, there is a stated reluctance to engage with new technologies, suggesting an average understanding at best.",
+      "confidence": 0.8
+    },
+    "problem_solving": {
+      "score": 3,
+      "comment": "The candidate demonstrates a lackadaisical attitude towards problem-solving and does not provide any examples of handling challenges effectively, indicating below-average problem-solving skills.",
+      "confidence": 0.9
+    },
+    "communication": {
+      "score": 2,
+      "comment": "The candidate shows minimal communication skills, often dismissing the importance of discussions and documentation. Their responses suggest a lack of engagement and inability to articulate thoughts appropriately.",
+      "confidence": 0.9
+    },
+    "adaptability": {
+      "score": 2,
+      "comment": "The candidate explicitly states a resistance to learning new technologies and adapting to challenging situations, demonstrating a lack of adaptability.",
+      "confidence": 0.9
+    },
+    "collaboration": {
+      "score": 1,
+      "comment": "The candidate exhibits an unwillingness to collaborate or participate in team dynamics, showing poor collaboration skills.",
+      "confidence": 0.95
+    },
+    "innovation": {
+      "score": 2,
+      "comment": "No evidence of innovative thinking; the candidate prefers to stick with familiar technologies and practices, indicating minimal inclination towards innovation.",
+      "confidence": 0.9
+    },
+    "attention_to_detail": {
+      "score": 3,
+      "comment": "The candidate dismisses the importance of documentation and code reviews, which suggests a lack of attention to detail. There is no evidence of meticulous practices.",
+      "confidence": 0.85
+    },
+    "time_management": {
+      "score": 4,
+      "comment": "The candidate prioritizes personal peace over organizational deadlines, showing some awareness of time management but lacking proactive strategies.",
+      "confidence": 0.8
+    },
+    "ethical_judgment": {
+      "score": 2,
+      "comment": "The candidate's approach to conflicts and work responsibilities shows a disregard for ethical considerations, suggesting poor ethical judgment.",
+      "confidence": 0.9
+    },
+    "summary": "The candidate shows minimal enthusiasm or commitment to their work, prioritizing personal convenience and compensation over professional growth or contribution. There is a notable lack of engagement in new technologies, teamwork, and problem-solving. Overall, the candidate might perform adequately in very isolated, directive-driven roles but lacks the qualities needed for roles requiring innovation, teamwork, and adaptive learning.",
+    "overall_score": 2.6
+  }
+}
