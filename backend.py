@@ -68,7 +68,7 @@ def make_phone_call():
         print("Call ID: ", phone_call_response.call_id)
         
         # Get transcript and audio
-        transcript, audio_file = get_call_transcript_and_audio(phone_call_response.call_id)
+        transcript, audio_data_uri = get_call_transcript_and_audio(phone_call_response.call_id)
         
         # Debug print
         print("\nReceived transcript type:", type(transcript))
@@ -81,19 +81,6 @@ def make_phone_call():
         
         # Transform the transcript into the required format for exchanges
         exchanges = transform_transcript_to_exchanges(transcript)
-        
-        # Convert audio file to base64
-        with open(audio_file, 'rb') as audio:
-            audio_bytes = audio.read()
-            audio_base64 = base64.b64encode(audio_bytes).decode('utf-8')
-            audio_data_uri = f"data:audio/mp3;base64,{audio_base64}"
-        
-        # Delete the audio file after converting to base64
-        try:
-            os.remove(audio_file)
-            print(f"Successfully deleted audio file: {audio_file}")
-        except Exception as e:
-            print(f"Warning: Could not delete audio file {audio_file}: {str(e)}")
         
         return jsonify({
             "status": "success",

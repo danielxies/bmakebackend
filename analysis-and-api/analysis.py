@@ -200,12 +200,19 @@ def evaluate_transcript(text):
                 {
                     "role": "system",
                     "content": f"""You are an expert interview evaluator. Analyze the following interview transcript and provide detailed scores and feedback.
-                    Use the following scoring reference:
-                    1-2 (Poor): Candidate shows minimal understanding or competence
-                    3-4 (Below Average): Some knowledge but lacks depth or clarity
-                    5-6 (Average): Basic understanding and adequate performance
-                    7-8 (Above Average): Strong competency with clear responses
-                    9-10 (Excellent): Exceptional performance with deep understanding
+                    Use the following scoring reference for each metric (1-10 scale):
+                    1-3 (Poor): Only for responses that show harmful intent, extremely unprofessional behavior, or dangerous suggestions
+                    4-5 (Below Average): For responses that are clearly off-topic or show significant misunderstanding
+                    6-7 (Average): For basic, acceptable responses that address the topics
+                    8-9 (Above Average): For good, detailed responses that show understanding
+                    10 (Excellent): For exceptional, insightful responses
+
+                    Important scoring guidelines:
+                    - Be lenient in scoring. Unless there are clear red flags, score at least a 6
+                    - For longer, engaged responses (over 1 minute), give higher scores (8-10)
+                    - Only give scores below 4 if there are serious concerns (e.g., harmful intent, dangerous suggestions)
+                    - The overall_score field must be between 1-10
+                    - For time_management, if the total interview length is over 1 minute, automatically give a score of 9-10
                     
                     For each metric, provide:
                     - A score from 1-10
@@ -227,7 +234,17 @@ def evaluate_transcript(text):
             }
         )
         
-        return json.loads(response.choices[0].message.content)
+        result = json.loads(response.choices[0].message.content)
+        
+        # Ensure overall_score is between 1-10
+        if 'data' in result and 'overall_score' in result['data']:
+            score = result['data']['overall_score']
+            if score > 10:
+                result['data']['overall_score'] = 10
+            elif score < 1:
+                result['data']['overall_score'] = 1
+        
+        return result
         
     except Exception as e:
         print(f"Error in evaluation: {str(e)}")

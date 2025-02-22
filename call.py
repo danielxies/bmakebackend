@@ -1,6 +1,7 @@
 import os
 import time 
 import requests
+import base64
 from retell import Retell
 from retell.resources.call import CallResource
 from keys import Keys
@@ -40,16 +41,18 @@ def get_call_transcript_and_audio(call_id: str):
             time.sleep(5)
 
 def download_audio(url, call_id):
-    """Downloads the call audio file from the provided URL."""
+    """Downloads the call audio and returns it as a base64 data URI."""
     response = requests.get(url, stream=True)
     
     if response.status_code == 200:
-        file_path = f"{call_id}.wav"
-        with open(file_path, "wb") as file:
-            for chunk in response.iter_content(chunk_size=1024):
-                file.write(chunk)
-        print(f"Audio file saved as {file_path}")
-        return file_path
+        # Read the entire response content
+        audio_data = response.content
+        # Convert to base64
+        audio_base64 = base64.b64encode(audio_data).decode('utf-8')
+        # Create data URI
+        audio_data_uri = f"data:audio/wav;base64,{audio_base64}"
+        print(f"Audio data converted to base64")
+        return audio_data_uri
     else:
         print(f"Failed to download audio. Status code: {response.status_code}")
         return None

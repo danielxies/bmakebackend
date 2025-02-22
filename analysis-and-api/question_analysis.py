@@ -8,15 +8,17 @@ from keys import Keys
 
 client = OpenAI(api_key=Keys.OPENAI_API_KEY)
 
-system_prompt = f"""Give the output in a  json format, 
+system_prompt = f"""Give the output in a json format, 
 No extra messages just purely the json output the json output needs to follow the format as follows: {format}. Nothing but the json file, only brackets, commas, and quotes are allowed and make sure that it is a valid json please.
-Use this as reference:
-1-2 (Poor): Candidate shows minimal understanding or competence. Responses are unclear, incorrect, or highly underdeveloped.
-3-4 (Below Average): Some knowledge or skill is present but lacks depth, clarity, or correctness. Struggles significantly in application.
-5-6 (Average): Candidate demonstrates a basic understanding and can perform adequately but may lack confidence, depth, or efficiency.
-7-8 (Above Average): Strong competency with clear and mostly correct responses. Can handle moderate complexity with good reasoning.
-9-10 (Excellent): Exceptional performance, demonstrating deep understanding, clear articulation, and high efficiency. Responses are insightful, precise, and well-structured.
-"""
+Use this as reference for scoring on a scale of 1-10:
+1-3 (Poor): Only for responses that show harmful intent, extremely unprofessional behavior, or dangerous suggestions
+4-5 (Below Average): For responses that are clearly off-topic or show significant misunderstanding
+6-7 (Average): For basic, acceptable responses that address the question
+8-9 (Above Average): For good, detailed responses that show understanding
+10 (Excellent): For exceptional, insightful responses
+
+Be lenient in scoring. Unless the response shows harmful intent or is completely irrelevant, score it at least a 6.
+For responses over 1 minute in length, automatically give a high score (8-10) to reward engagement."""
 
 class QuestionResponse(BaseModel):
     score: float
