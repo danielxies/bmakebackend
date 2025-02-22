@@ -88,6 +88,13 @@ def make_phone_call():
             audio_base64 = base64.b64encode(audio_bytes).decode('utf-8')
             audio_data_uri = f"data:audio/mp3;base64,{audio_base64}"
         
+        # Delete the audio file after converting to base64
+        try:
+            os.remove(audio_file)
+            print(f"Successfully deleted audio file: {audio_file}")
+        except Exception as e:
+            print(f"Warning: Could not delete audio file {audio_file}: {str(e)}")
+        
         return jsonify({
             "status": "success",
             "exchanges": exchanges["exchanges"],
