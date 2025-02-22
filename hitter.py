@@ -15,15 +15,17 @@ def hit_ringring(phone_number):
         print("Status:", data["status"])
         
         if data["status"] == "success":
-            print("\nInterview Results:")
-            print("\nExchanges:")
-            for exchange in data["exchanges"]:
-                print("\nQuestion:", exchange["interviewer"])
-                print("Answer:", exchange["interviewee"])
-                print("Feedback:", exchange["interviewer_feedback"])
-                print("Score:", exchange["score"])
+            # Save the exchanges data to sample.json
+            with open('sample.json', 'w') as f:
+                json.dump({"exchanges": data["exchanges"]}, f, indent=2)
+            print("\nAnalysis saved to sample.json")
             
-            print("\nOverall Evaluation:")
+            print("\nTranscript structure:")
+            print(f"Number of exchanges: {len(data['exchanges'])}")
+            print("\nAudio file location:", data["audio_file"])
+            
+            # Print the score_json in a formatted way
+            print("\nEvaluation Scores:")
             print(json.dumps(data["score_json"], indent=2))
         else:
             print("Error:", data["message"])
