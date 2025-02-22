@@ -3,7 +3,7 @@ import json
 import time
 
 def hit_ringring(phone_number):
-    url = f"http://127.0.0.1:5000/ringring?phone_number={phone_number}"
+    url = f"https://api.meriedith.com/ringring?phone_number={phone_number}"
     
     print(f"Making call request to {phone_number}...")
     print("This may take several minutes while the call completes...")
@@ -15,17 +15,15 @@ def hit_ringring(phone_number):
         print("Status:", data["status"])
         
         if data["status"] == "success":
-            # Save the exchanges data to sample.json
-            with open('sample.json', 'w') as f:
-                json.dump({"exchanges": data["exchanges"]}, f, indent=2)
-            print("\nAnalysis saved to sample.json")
+            print("\nInterview Results:")
+            print("\nExchanges:")
+            for exchange in data["exchanges"]:
+                print("\nQuestion:", exchange["interviewer"])
+                print("Answer:", exchange["interviewee"])
+                print("Feedback:", exchange["interviewer_feedback"])
+                print("Score:", exchange["score"])
             
-            print("\nTranscript structure:")
-            print(f"Number of exchanges: {len(data['exchanges'])}")
-            print("\nAudio file location:", data["audio_file"])
-            
-            # Print the score_json in a formatted way
-            print("\nEvaluation Scores:")
+            print("\nOverall Evaluation:")
             print(json.dumps(data["score_json"], indent=2))
         else:
             print("Error:", data["message"])
