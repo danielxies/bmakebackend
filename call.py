@@ -4,10 +4,12 @@ import requests
 import base64
 from retell import Retell
 from retell.resources.call import CallResource
-from keys import Keys
+from dotenv import load_dotenv
+
+load_dotenv()
 
 client = Retell(
-    api_key=Keys.RETELL_API_KEY,
+    api_key=os.getenv('RETELL_API_KEY'),
 )
 
 # make a call using interviewer and interviewee 

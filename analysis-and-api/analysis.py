@@ -5,9 +5,10 @@ from openai import OpenAI
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from keys import Keys
 from question_analysis import QuestionAnalysis
+from dotenv import load_dotenv
 
+load_dotenv()
 
 format = """
     "Category": {
@@ -83,7 +84,7 @@ def read_file(file_path):
     with open(file_path, 'r') as file:
         return file.read()
 
-client = OpenAI(api_key=Keys.OPENAI_API_KEY)
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 import json
 
 def create_evaluation_schema():

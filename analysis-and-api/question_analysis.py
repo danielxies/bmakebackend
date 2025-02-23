@@ -3,10 +3,12 @@ from openai import OpenAI
 import os
 import json
 import sys
+from dotenv import load_dotenv
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from keys import Keys
 
-client = OpenAI(api_key=Keys.OPENAI_API_KEY)
+load_dotenv()
+
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 system_prompt = f"""Give the output in a json format, 
 No extra messages just purely the json output the json output needs to follow the format as follows: {format}. Nothing but the json file, only brackets, commas, and quotes are allowed and make sure that it is a valid json please.
